@@ -1,0 +1,10 @@
+...
+backend dcsf19_api_routing_demo
+  balance roundrobin
+  # route to service in Swarm (from Consul)
+{{range service "dcsf19-api-routing-demo"}}
+  server {{.Address}}:{{.Port}} {{.Address}}:{{.Port}} check{{end}}
+  # Rout to Kubernetes NodePort on routing-specific nodes
+{{range service "k8s-routing"}}
+  server {{.Address}}:32880 {{.Address}}:32880 check{{end}}
+...
