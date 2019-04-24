@@ -24,21 +24,15 @@ spec:
   selector:
     matchLabels:
       app: dcsf19-api-routing-demo
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
         app: dcsf19-api-routing-demo
     spec:
-      restartPolicy: Always
       containers:
         - name: dcsf19-api-routing-demo
           image: dckr/dcsf19-api-routing-demo:1-kubernetes
-          imagePullPolicy: Always
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 80
           ports:
             - containerPort: 80
 

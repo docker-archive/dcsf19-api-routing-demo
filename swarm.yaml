@@ -9,14 +9,5 @@ services:
         target: 80
     deploy:
       replicas: 3
-      update_config:
-        parallelism: 1
-        failure_action: rollback
-        delay: 30s
-      resources:
-        limits:
-            memory: 128M
-        reservations:
-            memory: 128M
     environment:
       SERVICE_NAME: dcsf19-api-routing-demo
